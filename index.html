@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of ACHYUTHAN ASOK, a professional video editor and cinematic storyteller specializing in commercials, music videos, VFX, and motion graphics.">
+    <title>ACHYUTHAN ASOK | Cinematic Video Editor Portfolio</title>
+    <!-- Google Fonts: Outfit, Syne, and Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+    <!-- Particle Background Overlay -->
+    <div class="bg-particles" id="bg-particles"></div>
+    <div class="bg-gradient-glow"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-accent">ACHYUTHAN</span> ASOK<span class="logo-dot">.</span>
+            </a>
+            <nav class="nav-links" id="main-nav">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#portfolio" class="nav-link">Showcase</a>
+                <a href="#skills" class="nav-link">Expertise</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-glow btn-primary" id="header-cta">
+                    <span>Let's Create</span>
+                    <i data-lucide="sparkles"></i>
+                </a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav-drawer">
+        <button class="mobile-nav-close" id="mobile-nav-close">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="mobile-nav-links">
+            <a href="#hero" class="mobile-link">Home</a>
+            <a href="#portfolio" class="mobile-link">Showcase</a>
+            <a href="#skills" class="mobile-link">Expertise</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <div class="badge-container animate-fade-in">
+                    <span class="cyber-badge" id="hero-badge-val">
+                        <span class="badge-ping"></span>
+                        Available for Freelance & Contract
+                    </span>
+                </div>
+                <h1 class="hero-title animate-text-reveal" id="hero-title-val">
+                    Bending Reality <br>
+                    <span class="gradient-text">Frame by Frame</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in" id="hero-subtitle-val">
+                    Cinematic storyteller, VFX artist, and expert video editor crafting high-impact visual experiences for brands, artists, and filmmakers worldwide.
+                </p>
+                <div class="hero-actions animate-fade-in">
+                    <a href="#portfolio" class="btn btn-glow btn-primary" id="hero-cta-portfolio">
+                        <span>View Reel</span>
+                        <i data-lucide="play-circle"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-glow btn-secondary" id="hero-cta-contact">
+                        <span>Get in Touch</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Video Showcase Card -->
+            <div class="hero-video-wrapper animate-slide-up">
+                <div class="video-card glass-panel" id="hero-video-card">
+                    <div class="hero-slideshow-container" id="hero-slideshow">
+                        <!-- Dynamically Rendered by app.js -->
+                    </div>
+                    <div class="video-thumbnail-overlay" style="background: transparent;">
+                        <div class="play-btn-pulse btn-glow" id="play-hero-reel">
+                            <i data-lucide="play"></i>
+                        </div>
+                    </div>
+                    <!-- Ambient Backlight -->
+                    <div class="card-ambient-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio / Works Section -->
+        <section class="portfolio-section" id="portfolio">
+            <div class="section-header">
+                <span class="section-tag">Showcase</span>
+                <h2 class="section-title">Selected Works</h2>
+                <p class="section-desc">Explore a curated collection of cinematic pieces, pacing masterpieces, and VFX compositions.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-container" id="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="commercial">Commercials</button>
+                <button class="filter-btn" data-filter="music">Music Videos</button>
+                <button class="filter-btn" data-filter="cinematic">Cinematic & VFX</button>
+                <button class="filter-btn" data-filter="motion">Motion Design</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Dynamically Rendered by app.js -->
+            </div>
+        </section>
+
+        <!-- Expertise / Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="section-header">
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">Editing Specializations</h2>
+                <p class="section-desc">Using advanced tools and workflows to bring your concepts to life in high definition.</p>
+            </div>
+
+            <div class="skills-grid" id="skills-grid">
+                <!-- Dynamically Rendered by app.js -->
+            </div>
+
+            <!-- Tech logos / tools -->
+            <div class="tools-container">
+                <span class="tools-label">PRO WORKFLOW INTEGRATION</span>
+                <div class="tools-row">
+                    <div class="tool-item">Premiere Pro</div>
+                    <div class="tool-item">After Effects</div>
+                    <div class="tool-item">DaVinci Resolve</div>
+                    <div class="tool-item">Avid Media Composer</div>
+                    <div class="tool-item">Cinema 4D</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-container glass-panel">
+                <div class="about-media">
+                    <img src="assets/profile_pic.jpg" alt="ACHYUTHAN ASOK in Studio" class="about-img">
+                    <div class="card-ambient-glow"></div>
+                </div>
+                <div class="about-details">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title-left" id="about-title-val">Creative Editor & VFX Architect</h2>
+                    <p id="about-text1-val">I have spent the last 8+ years collaborating with agencies, artists, and studios to compress narratives into visually unforgettable moments. For me, video editing isn't just about putting two clips together; it's about engineering rhythm, sculpting atmosphere, and directing human emotion.</p>
+                    <p id="about-text2-val">Based in Trivandrum, India, working globally. Currently pushing boundaries with AI integrations, hybrid motion workflows, and advanced virtual production setups.</p>
+                    
+                    <div class="stats-row" id="about-stats-val">
+                        <!-- Dynamically Rendered by app.js -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2 class="section-title-left">Let's Create <br><span class="gradient-text">Something Iconic</span></h2>
+                    <p>Ready to level up your project? Send me your brief, script, or raw footage ideas, and let's forge a visual masterpiece.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method-item">
+                            <div class="method-icon"><i data-lucide="mail"></i></div>
+                            <div>
+                                <span class="method-label">Email Me</span>
+                                <a href="mailto:achyueee181@gmail.com" class="method-value">achyueee181@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method-item">
+                            <div class="method-icon"><i data-lucide="phone"></i></div>
+                            <div>
+                                <span class="method-label">Call/WhatsApp</span>
+                                <a href="tel:7736957082" class="method-value">7736957082</a>
+                            </div>
+                        </div>
+                        <div class="contact-method-item">
+                            <div class="method-icon"><i data-lucide="map-pin"></i></div>
+                            <div>
+                                <span class="method-label">Base</span>
+                                <span class="method-value">Trivandrum, Keralam, India (Remote)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container glass-panel">
+                    <form id="portfolio-contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contact-name" class="form-control" placeholder=" " required>
+                            <label for="contact-name" class="form-label">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact-email" class="form-control" placeholder=" " required>
+                            <label for="contact-email" class="form-label">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="contact-project" class="form-control" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="commercial">Commercial Video</option>
+                                <option value="music">Music Video</option>
+                                <option value="vfx">VFX & Grading Work</option>
+                                <option value="long-form">Long-form Film / Documentary</option>
+                                <option value="other">Other Collaboration</option>
+                            </select>
+                            <label for="contact-project" class="form-label select-label">Project Type</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" class="form-control" rows="4" placeholder=" " required></textarea>
+                            <label for="contact-message" class="form-label">Tell me about your project...</label>
+                        </div>
+                        <button type="submit" class="btn btn-glow btn-primary w-full" id="contact-submit-btn">
+                            <span>Send Message</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-accent">ACHYUTHAN</span> ASOK<span class="logo-dot">.</span>
+                </a>
+                <p>Sculpting cinematic experiences frame by frame.</p>
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="social-link" aria-label="Vimeo"><i data-lucide="video"></i></a>
+                <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 ACHYUTHAN ASOK. All Rights Reserved. Made for Future Editors.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Lightbox / Modal Player -->
+    <div class="video-lightbox" id="video-lightbox">
+        <div class="lightbox-close" id="lightbox-close">
+            <i data-lucide="x"></i>
+        </div>
+        <div class="lightbox-container">
+            <div class="lightbox-video-wrapper glass-panel">
+                <video id="lightbox-video" controls autoplay playsinline loop>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="lightbox-loader" id="lightbox-loader"></div>
+            </div>
+            <div class="lightbox-details">
+                <h3 class="lightbox-title" id="lightbox-title">Project Title</h3>
+                <p class="lightbox-desc" id="lightbox-desc">Detailed project description goes here.</p>
+                <div class="lightbox-meta">
+                    <span id="lightbox-meta-cat" class="portfolio-cat">Category</span>
+                    <span id="lightbox-meta-duration"><i data-lucide="clock"></i> Duration</span>
+                    <span id="lightbox-meta-year"><i data-lucide="calendar"></i> Year</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING ADMIN CONTROL TRIGGER -->
+    <button class="admin-trigger-btn btn-glow" id="admin-trigger-btn" aria-label="Admin Settings">
+        <i data-lucide="lock"></i>
+    </button>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="admin-modal" id="admin-login-modal">
+        <div class="admin-modal-container glass-panel">
+            <button class="admin-modal-close" id="admin-login-close"><i data-lucide="x"></i></button>
+            <div class="admin-modal-header">
+                <h2>Admin Login Panel</h2>
+                <p>Verify password to access site builder configuration.</p>
+            </div>
+            <form id="admin-login-form" class="contact-form">
+                <div class="form-group">
+                    <input type="password" id="admin-password" class="form-control" placeholder=" " required autocomplete="current-password">
+                    <label for="admin-password" class="form-label">Admin Password</label>
+                </div>
+                <div id="login-error-msg" class="admin-error-text"></div>
+                <button type="submit" class="btn btn-glow btn-primary w-full" id="login-submit-btn">
+                    <span>Authenticate</span>
+                    <i data-lucide="key-round"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD MODAL -->
+    <div class="admin-modal" id="admin-dashboard-modal">
+        <div class="admin-dashboard-container glass-panel">
+            <div class="admin-dashboard-header">
+                <div class="dashboard-title-area">
+                    <h2>Admin Settings Dashboard</h2>
+                    <span class="cyber-badge">Creator Mode Active</span>
+                </div>
+                <div class="dashboard-header-actions">
+                    <button class="btn btn-glow btn-secondary" id="admin-logout-btn">
+                        <span>Log Out</span>
+                        <i data-lucide="log-out"></i>
+                    </button>
+                    <button class="admin-modal-close" id="admin-dashboard-close"><i data-lucide="x"></i></button>
+                </div>
+            </div>
+
+            <!-- Tab Headers -->
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="tab-content">Global Content</button>
+                <button class="tab-btn" data-tab="tab-projects">Portfolio Projects</button>
+                <button class="tab-btn" data-tab="tab-add-project">Add New Project</button>
+                <button class="tab-btn" data-tab="tab-smtp">Mail & SMTP</button>
+            </div>
+
+            <!-- Tab 1: Global Site Content -->
+            <div class="tab-content-panel active" id="tab-content">
+                <form id="dashboard-content-form" class="dashboard-form">
+                    <h3 class="form-section-title">Hero Section</h3>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <input type="text" id="edit-hero-badge" class="form-control" placeholder=" " required>
+                            <label for="edit-hero-badge" class="form-label">Hero Badge Text</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="edit-hero-title" class="form-control" placeholder=" " required>
+                            <label for="edit-hero-title" class="form-label">Hero Title (HTML supported)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="edit-hero-subtitle" class="form-control" rows="2" placeholder=" " required></textarea>
+                        <label for="edit-hero-subtitle" class="form-label">Hero Subtitle Text</label>
+                    </div>
+
+                    <h3 class="form-section-title">About & Stats Section</h3>
+                    <div class="form-group">
+                        <input type="text" id="edit-about-title" class="form-control" placeholder=" " required>
+                        <label for="edit-about-title" class="form-label">About Heading Title</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="edit-about-text1" class="form-control" rows="3" placeholder=" " required></textarea>
+                        <label for="edit-about-text1" class="form-label">About Description Paragraph 1</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="edit-about-text2" class="form-control" rows="2" placeholder=" " required></textarea>
+                        <label for="edit-about-text2" class="form-label">About Description Paragraph 2</label>
+                    </div>
+
+                    <div class="stats-edit-row">
+                        <div class="stat-edit-group">
+                            <h4>Stat 1</h4>
+                            <input type="text" id="edit-stat-1-num" class="form-control mini-input" placeholder="Value" required>
+                            <input type="text" id="edit-stat-1-lbl" class="form-control mini-input" placeholder="Label" required>
+                        </div>
+                        <div class="stat-edit-group">
+                            <h4>Stat 2</h4>
+                            <input type="text" id="edit-stat-2-num" class="form-control mini-input" placeholder="Value" required>
+                            <input type="text" id="edit-stat-2-lbl" class="form-control mini-input" placeholder="Label" required>
+                        </div>
+                        <div class="stat-edit-group">
+                            <h4>Stat 3</h4>
+                            <input type="text" id="edit-stat-3-num" class="form-control mini-input" placeholder="Value" required>
+                            <input type="text" id="edit-stat-3-lbl" class="form-control mini-input" placeholder="Label" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-glow btn-primary" id="save-content-btn">
+                        <span>Save General Content</span>
+                        <i data-lucide="check"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tab 2: Manage Projects List -->
+            <div class="tab-content-panel" id="tab-projects">
+                <div class="dashboard-projects-list" id="dashboard-projects-list">
+                    <!-- Loaded dynamically via app.js -->
+                </div>
+            </div>
+
+            <!-- Tab 3: Add New Project -->
+            <div class="tab-content-panel" id="tab-add-project">
+                <form id="dashboard-add-project-form" class="dashboard-form">
+                    <h3 class="form-section-title">New Portfolio Item Details</h3>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <input type="text" id="add-project-title" class="form-control" placeholder=" " required>
+                            <label for="add-project-title" class="form-label">Project Title</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="add-project-category" class="form-control" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="commercial">Commercial</option>
+                                <option value="music">Music Video</option>
+                                <option value="cinematic">Cinematic & VFX</option>
+                                <option value="motion">Motion Design</option>
+                            </select>
+                            <label for="add-project-category" class="form-label select-label">Category</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="add-project-desc" class="form-control" rows="2" placeholder=" " required></textarea>
+                        <label for="add-project-desc" class="form-label">Short Description</label>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <input type="text" id="add-project-duration" class="form-control" placeholder=" " required>
+                            <label for="add-project-duration" class="form-label">Duration (e.g., 1:30)</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="add-project-year" class="form-control" placeholder=" " required>
+                            <label for="add-project-year" class="form-label">Year (e.g., 2026)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-upload-group">
+                        <h4>Project Video File</h4>
+                        <div class="upload-controls">
+                            <input type="file" id="add-project-video-file" class="file-input-control" accept="video/*">
+                            <div class="upload-divider">OR</div>
+                            <input type="text" id="add-project-video" class="form-control" placeholder="Static Video Path/URL (e.g., assets/video.mp4)">
+                            <label for="add-project-video" class="form-label">Video URL/Path</label>
+                        </div>
+                    </div>
+
+                    <div class="form-upload-group">
+                        <h4>Thumbnail Image Asset</h4>
+                        <div class="upload-controls">
+                            <input type="file" id="add-project-file" class="file-input-control" accept="image/*">
+                            <div class="upload-divider">OR</div>
+                            <input type="text" id="add-project-thumb-url" class="form-control" placeholder="Static Thumbnail Path/URL (e.g., assets/image.png)">
+                            <label for="add-project-thumb-url" class="form-label">Thumbnail URL/Path</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-glow btn-primary" id="add-project-submit-btn">
+                        <span>Publish Project</span>
+                        <i data-lucide="plus-circle"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tab 4: SMTP Settings -->
+            <div class="tab-content-panel" id="tab-smtp">
+                <form id="dashboard-smtp-form" class="dashboard-form">
+                    <h3 class="form-section-title">SMTP Mail Server Configuration</h3>
+                    <p class="section-desc" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                        Configure SMTP credentials to receive real email alerts when visitors submit the contact form. 
+                        For Gmail, use a 16-character <strong>App Password</strong> generated in your Google Account settings.
+                    </p>
+                    
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <input type="text" id="edit-smtp-host" class="form-control" placeholder=" " required>
+                            <label for="edit-smtp-host" class="form-label">SMTP Host (e.g. smtp.gmail.com)</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="edit-smtp-port" class="form-control" placeholder=" " required>
+                            <label for="edit-smtp-port" class="form-label">SMTP Port (e.g. 587 or 465)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <input type="email" id="edit-smtp-user" class="form-control" placeholder=" " required>
+                            <label for="edit-smtp-user" class="form-label">SMTP Username / Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="edit-smtp-password" class="form-control" placeholder=" " autocomplete="new-password">
+                            <label for="edit-smtp-password" class="form-label">SMTP Password / App Password</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="edit-smtp-receiver" class="form-control" placeholder=" " required>
+                        <label for="edit-smtp-receiver" class="form-label">Recipient Email Address (e.g. achyueee181@gmail.com)</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-glow btn-primary" id="save-smtp-btn">
+                        <span>Save SMTP Settings</span>
+                        <i data-lucide="check"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PROJECT EDIT DETAILS MODAL (POPUP) -->
+    <div class="admin-modal" id="admin-edit-project-modal" style="z-index: 1100;">
+        <div class="admin-modal-container glass-panel" style="max-width: 700px;">
+            <button class="admin-modal-close" id="admin-edit-project-close"><i data-lucide="x"></i></button>
+            <div class="admin-modal-header">
+                <h2>Edit Project Details</h2>
+                <p>Modify portfolio entry properties and assets.</p>
+            </div>
+            <form id="dashboard-edit-project-form" class="dashboard-form">
+                <input type="hidden" id="edit-project-id">
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <input type="text" id="edit-project-title" class="form-control" placeholder=" " required>
+                        <label for="edit-project-title" class="form-label">Project Title</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="edit-project-category" class="form-control" required>
+                            <option value="commercial">Commercial</option>
+                            <option value="music">Music Video</option>
+                            <option value="cinematic">Cinematic & VFX</option>
+                            <option value="motion">Motion Design</option>
+                        </select>
+                        <label for="edit-project-category" class="form-label select-label">Category</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="edit-project-desc" class="form-control" rows="2" placeholder=" " required></textarea>
+                    <label for="edit-project-desc" class="form-label">Description</label>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <input type="text" id="edit-project-duration" class="form-control" placeholder=" " required>
+                        <label for="edit-project-duration" class="form-label">Duration</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="edit-project-year" class="form-control" placeholder=" " required>
+                        <label for="edit-project-year" class="form-label">Year</label>
+                    </div>
+                </div>
+
+                <div class="form-upload-group">
+                    <h4>Project Video File</h4>
+                    <div class="upload-controls">
+                        <input type="file" id="edit-project-video-file" class="file-input-control" accept="video/*">
+                        <div class="upload-divider">OR</div>
+                        <input type="text" id="edit-project-video" class="form-control" placeholder="Static Video Path/URL">
+                        <label for="edit-project-video" class="form-label">Video URL/Path</label>
+                    </div>
+                </div>
+
+                <div class="form-upload-group">
+                    <h4>Thumbnail Image Asset</h4>
+                    <div class="upload-controls">
+                        <input type="file" id="edit-project-file" class="file-input-control" accept="image/*">
+                        <div class="upload-divider">OR</div>
+                        <input type="text" id="edit-project-thumb-url" class="form-control" placeholder="Static Thumbnail Path/URL">
+                        <label for="edit-project-thumb-url" class="form-label">Thumbnail URL/Path</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-glow btn-primary w-full">
+                    <span>Save Project Properties</span>
+                    <i data-lucide="check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js?v=3"></script>
+</body>
+</html>

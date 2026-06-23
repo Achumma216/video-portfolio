@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "badge": "Available for Freelance & Contract",
+    "title": "Bending Reality <br><span class=\"gradient-text\">Frame by Frame</span>",
+    "subtitle": "Cinematic storyteller, VFX artist, and expert video editor crafting high-impact visual experiences for brands, artists, and filmmakers worldwide."
+  },
+  "about": {
+    "title": "Achyuthan Asok",
+    "text1": "I have spent the last 8+ years collaborating with agencies, artists, and studios to compress narratives into visually unforgettable moments. For me, video editing isn't just about putting two clips together; it's about engineering rhythm, sculpting atmosphere, and directing human emotion.",
+    "text2": "Based in New York, working globally. Currently pushing boundaries with AI integrations, hybrid motion workflows, and advanced virtual production setups.",
+    "stats": [
+      {
+        "number": "120+",
+        "label": "Projects Delivered"
+      },
+      {
+        "number": "8+",
+        "label": "Years of Experience"
+      },
+      {
+        "number": "15M+",
+        "label": "Combined Views"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "skill-1",
+      "name": "Color Grading",
+      "desc": "Precise DaVinci Resolve color pipelines, customized LUT creation, film emulation, and scene matching to craft distinct moods.",
+      "level": 95,
+      "icon": "sliders",
+      "colorClass": "bg-glow-cyan",
+      "barClass": "bar-cyan"
+    },
+    {
+      "id": "skill-2",
+      "name": "Visual Effects & Compositing",
+      "desc": "Screen replacement, clean plate generation, chroma keying, element integration, and particle system simulation in After Effects.",
+      "level": 88,
+      "icon": "zap",
+      "colorClass": "bg-glow-magenta",
+      "barClass": "bar-magenta"
+    },
+    {
+      "id": "skill-3",
+      "name": "Sound Design & Mixing",
+      "desc": "Immersive SFX layering, dialogue leveling, audio clean-up, beat synchronization, and atmospheric soundscaping.",
+      "level": 90,
+      "icon": "volume-2",
+      "colorClass": "bg-glow-emerald",
+      "barClass": "bar-emerald"
+    },
+    {
+      "id": "skill-4",
+      "name": "Cinematic Pacing & Rhythm",
+      "desc": "Mastery of editorial flow, emotional pacing, subverting narrative expectations, action matching, and precise dynamic cuts.",
+      "level": 98,
+      "icon": "activity",
+      "colorClass": "bg-glow-gold",
+      "barClass": "bar-gold"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1782179114638",
+      "title": "CULTURE",
+      "category": "commercial",
+      "desc": "Party, Vacations, Food and Cultre videos fast pace cuts and slow pace cuts, long form and short form videos.",
+      "duration": "00:30",
+      "year": "2026",
+      "videoUrl": "assets/upload_1782180216.mp4",
+      "thumbUrl": "assets/upload_1782182689.jpg"
+    },
+    {
+      "id": "project-1782183407605",
+      "title": "PARTY",
+      "category": "commercial",
+      "desc": "Party Night and Club Reels",
+      "duration": "00:30",
+      "year": "2026",
+      "videoUrl": "assets/upload_1782183407.mp4",
+      "thumbUrl": "assets/upload_1782183407.jpg"
+    }
+  ],
+  "smtp": {
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "user": "",
+    "password": "",
+    "receiver": "achyueee181@gmail.com"
+  }
+}
