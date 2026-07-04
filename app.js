@@ -29,6 +29,7 @@ async function fetchContent() {
         renderSkills();
         renderPortfolioGrid();
         renderDashboardProjects();
+        renderDashboardMessages();
         
         updateIcons();
     } catch (err) {
@@ -265,6 +266,76 @@ function renderDashboardProjects() {
     });
 }
 
+function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
+}
+
+function renderDashboardMessages() {
+    const messages = siteData.messages || [];
+    
+    // Update count badge in tab header and dashboard header
+    const badge = document.getElementById('inbox-badge-count');
+    if (badge) badge.textContent = messages.length;
+    
+    const summaryBadge = document.getElementById('inbox-summary-badge');
+    if (summaryBadge) summaryBadge.textContent = `${messages.length} Inquiry${messages.length === 1 ? '' : 'ies'}`;
+    
+    const list = document.getElementById('dashboard-messages-list');
+    if (!list) return;
+    
+    list.innerHTML = '';
+    
+    if (messages.length === 0) {
+        list.innerHTML = `
+            <div style="text-align: center; padding: 3rem 0; color: var(--text-secondary);">
+                <i data-lucide="inbox" style="width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.5; display: inline-block;"></i>
+                <p>Your inbox is empty.</p>
+            </div>
+        `;
+        updateIcons();
+        return;
+    }
+    
+    // Render in reverse chronological order (newest first)
+    [...messages].reverse().forEach(msg => {
+        const card = document.createElement('div');
+        card.classList.add('inbox-msg-card');
+        card.innerHTML = `
+            <div class="inbox-msg-header">
+                <div class="inbox-msg-sender">
+                    <h4>${escapeHTML(msg.name)}</h4>
+                    <span><a href="mailto:${escapeHTML(msg.email)}" style="color: var(--accent-cyan); text-decoration: underline;">${escapeHTML(msg.email)}</a></span>
+                </div>
+                <div class="inbox-msg-meta">
+                    <div>${msg.date}</div>
+                </div>
+            </div>
+            <div class="inbox-msg-project" style="margin-bottom: 0.75rem;">Project Inquiry: ${escapeHTML(msg.project)}</div>
+            <div class="inbox-msg-body">${escapeHTML(msg.message)}</div>
+            <div class="inbox-msg-actions">
+                <button class="btn btn-glow btn-danger" onclick="deleteMessage('${msg.id}')">
+                    <span>Delete Message</span>
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        `;
+        list.appendChild(card);
+    });
+    updateIcons();
+}
+
+window.deleteMessage = function(id) {
+    if (!confirm('Are you sure you want to delete this message?')) return;
+    
+    siteData.messages = siteData.messages.filter(m => m.id !== id);
+    saveSiteData();
+};
+
 // -------------------------------------------------------------
 // EVENT BINDINGS & ADMIN PANELS OVERLAYS
 // -------------------------------------------------------------
@@ -379,6 +450,7 @@ function populateDashboardContentForm() {
     
     // Populate SMTP settings
     const smtp = siteData.smtp || {};
+    document.getElementById('edit-smtp-web3forms-key').value = smtp.web3forms_key || '';
     document.getElementById('edit-smtp-host').value = smtp.host || 'smtp.gmail.com';
     document.getElementById('edit-smtp-port').value = smtp.port || 587;
     document.getElementById('edit-smtp-user').value = smtp.user || '';
@@ -431,8 +503,12 @@ document.getElementById('dashboard-smtp-form').addEventListener('submit', (e) =>
     
     if (!siteData.smtp) siteData.smtp = {};
     
+    siteData.smtp.web3forms_key = document.getElementById('edit-smtp-web3forms-key').value.trim();
     siteData.smtp.host = document.getElementById('edit-smtp-host').value;
-    siteData.smtp.port = parseInt(document.getElementById('edit-smtp-port').value);
+    
+    const portVal = document.getElementById('edit-smtp-port').value;
+    siteData.smtp.port = portVal ? parseInt(portVal) : 587;
+    
     siteData.smtp.user = document.getElementById('edit-smtp-user').value;
     siteData.smtp.password = document.getElementById('edit-smtp-password').value;
     siteData.smtp.receiver = document.getElementById('edit-smtp-receiver').value;

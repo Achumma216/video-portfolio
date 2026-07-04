@@ -339,6 +339,7 @@
                 <button class="tab-btn" data-tab="tab-projects">Portfolio Projects</button>
                 <button class="tab-btn" data-tab="tab-add-project">Add New Project</button>
                 <button class="tab-btn" data-tab="tab-smtp">Mail & SMTP</button>
+                <button class="tab-btn" data-tab="tab-messages" id="inbox-tab-btn">Inbox <span class="badge-count" id="inbox-badge-count">0</span></button>
             </div>
 
             <!-- Tab 1: Global Site Content -->
@@ -473,26 +474,34 @@
             <!-- Tab 4: SMTP Settings -->
             <div class="tab-content-panel" id="tab-smtp">
                 <form id="dashboard-smtp-form" class="dashboard-form">
-                    <h3 class="form-section-title">SMTP Mail Server Configuration</h3>
+                    <h3 class="form-section-title">Option A: Web3Forms (Recommended - Zero Server Config)</h3>
                     <p class="section-desc" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
-                        Configure SMTP credentials to receive real email alerts when visitors submit the contact form. 
-                        For Gmail, use a 16-character <strong>App Password</strong> generated in your Google Account settings.
+                        To receive email alerts without configuration passwords, request a free access key from <a href="https://web3forms.com" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">web3forms.com</a> and paste it below:
+                    </p>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <input type="text" id="edit-smtp-web3forms-key" class="form-control" placeholder=" ">
+                        <label for="edit-smtp-web3forms-key" class="form-label">Web3Forms Access Key</label>
+                    </div>
+
+                    <h3 class="form-section-title">Option B: Custom SMTP Server Configuration</h3>
+                    <p class="section-desc" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                        Alternatively, use your own mail provider coordinates. For Gmail, you must enter a 16-character <strong>App Password</strong>.
                     </p>
                     
                     <div class="form-row-2">
                         <div class="form-group">
-                            <input type="text" id="edit-smtp-host" class="form-control" placeholder=" " required>
+                            <input type="text" id="edit-smtp-host" class="form-control" placeholder=" ">
                             <label for="edit-smtp-host" class="form-label">SMTP Host (e.g. smtp.gmail.com)</label>
                         </div>
                         <div class="form-group">
-                            <input type="number" id="edit-smtp-port" class="form-control" placeholder=" " required>
+                            <input type="number" id="edit-smtp-port" class="form-control" placeholder=" ">
                             <label for="edit-smtp-port" class="form-label">SMTP Port (e.g. 587 or 465)</label>
                         </div>
                     </div>
 
                     <div class="form-row-2">
                         <div class="form-group">
-                            <input type="email" id="edit-smtp-user" class="form-control" placeholder=" " required>
+                            <input type="email" id="edit-smtp-user" class="form-control" placeholder=" ">
                             <label for="edit-smtp-user" class="form-label">SMTP Username / Email</label>
                         </div>
                         <div class="form-group">
@@ -507,10 +516,21 @@
                     </div>
 
                     <button type="submit" class="btn btn-glow btn-primary" id="save-smtp-btn">
-                        <span>Save SMTP Settings</span>
+                        <span>Save Mail Settings</span>
                         <i data-lucide="check"></i>
                     </button>
                 </form>
+            </div>
+
+            <!-- Tab 5: Client Messages / Inbox -->
+            <div class="tab-content-panel" id="tab-messages">
+                <div class="dashboard-inbox-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 class="form-section-title" style="margin-bottom: 0;">Visitor Inquiries</h3>
+                    <span class="cyber-badge" id="inbox-summary-badge">0 Messages</span>
+                </div>
+                <div class="dashboard-messages-list" id="dashboard-messages-list" style="display: flex; flex-direction: column; gap: 1.5rem; max-height: 50vh; overflow-y: auto; padding-right: 0.5rem;">
+                    <!-- Dynamically Rendered by app.js -->
+                </div>
             </div>
 
         </div>

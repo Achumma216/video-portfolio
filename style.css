@@ -1755,3 +1755,78 @@ textarea.form-control {
     margin-left: 8px;
     vertical-align: middle;
 }
+
+/* Inbox Message Cards */
+.inbox-msg-card {
+    position: relative;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    transition: var(--transition-smooth);
+}
+.inbox-msg-card:hover {
+    border-color: rgba(0, 242, 254, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+}
+.inbox-msg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.75rem;
+}
+.inbox-msg-sender h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-family: var(--font-display);
+}
+.inbox-msg-sender span {
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+}
+.inbox-msg-meta {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.inbox-msg-project {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(138, 43, 226, 0.15);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #df80ff;
+    margin-bottom: 0.5rem;
+}
+.inbox-msg-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.inbox-msg-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+.badge-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-cyan);
+    color: #050515;
+    font-size: 0.7rem;
+    font-weight: 800;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}

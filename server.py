@@ -23,6 +23,30 @@ mimetypes.add_type('image/jpeg', '.jpeg')
 PORT = 8000
 PASSWORD = " AchuSona#92!Sun "
 
+def send_web3forms(key, name, email, project, message):
+    import urllib.request
+    import urllib.parse
+    url = "https://api.web3forms.com/submit"
+    payload = {
+        "access_key": key,
+        "name": name,
+        "email": email,
+        "subject": f"New Project Inquiry: {project} from {name}",
+        "message": f"Project Type: {project}\n\nMessage:\n{message}"
+    }
+    data = urllib.parse.urlencode(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=data, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as res:
+            res_data = json.loads(res.read().decode("utf-8"))
+            if res_data.get("success"):
+                return True, "Message sent successfully via Web3Forms!"
+            else:
+                return False, res_data.get("message", "Failed to send message via Web3Forms.")
+    except Exception as e:
+        return False, f"Web3Forms request failed: {str(e)}"
+
 def send_contact_email(name, sender_email, project_type, message_text):
     try:
         with open('data.json', 'r', encoding='utf-8') as f:
@@ -30,6 +54,13 @@ def send_contact_email(name, sender_email, project_type, message_text):
         smtp_conf = data.get('smtp', {})
     except Exception:
         smtp_conf = {}
+
+    web3forms_key = smtp_conf.get('web3forms_key', '').strip()
+    
+    # If Web3Forms Key is provided, use Web3Forms API instead of custom SMTP
+    if web3forms_key:
+        print(f"Routing email submission via Web3Forms API using key: {web3forms_key[:8]}...", flush=True)
+        return send_web3forms(web3forms_key, name, sender_email, project_type, message_text)
 
     host = smtp_conf.get('host', 'smtp.gmail.com')
     port = int(smtp_conf.get('port', 587))
@@ -44,7 +75,7 @@ def send_contact_email(name, sender_email, project_type, message_text):
         print(f"Project Type: {project_type}", flush=True)
         print(f"Message: {message_text}", flush=True)
         print("---------------------------------------\n", flush=True)
-        return True, "Message received (Demo Mode - SMTP credentials not configured)."
+        return True, "Message received (Demo Mode - SMTP/Web3Forms credentials not configured)."
 
     try:
         msg = MIMEMultipart()
@@ -98,10 +129,19 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             try:
                 with open('data.json', 'r', encoding='utf-8') as f:
-                    self.wfile.write(f.read().encode('utf-8'))
+                    content = json.load(f)
+                
+                # Security Filter: Strip client messages and credentials for unauthenticated requests
+                if not self.check_auth():
+                    content.pop('messages', None)
+                    if 'smtp' in content:
+                        content['smtp'].pop('password', None)
+                        content['smtp'].pop('web3forms_key', None)
+                
+                self.wfile.write(json.dumps(content).encode('utf-8'))
             except Exception as e:
                 self.wfile.write(json.dumps({
-                    'hero': {}, 'about': {}, 'skills': [], 'projects': []
+                    'hero': {}, 'about': {}, 'skills': [], 'projects': [], 'smtp': {}
                 }).encode('utf-8'))
                 
         elif self.path == '/api/check-auth':
@@ -161,6 +201,26 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
                     self.end_headers()
                     self.wfile.write(json.dumps({'error': 'All fields are required.'}).encode('utf-8'))
                     return
+                
+                # Persist message locally in database
+                try:
+                    with open('data.json', 'r', encoding='utf-8') as f:
+                        db = json.load(f)
+                    
+                    new_msg = {
+                        "id": f"msg_{int(time.time() * 1000)}",
+                        "name": name,
+                        "email": email,
+                        "project": project,
+                        "message": message,
+                        "date": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+                    }
+                    db.setdefault("messages", []).append(new_msg)
+                    
+                    with open('data.json', 'w', encoding='utf-8') as f:
+                        json.dump(db, f, indent=2, ensure_ascii=False)
+                except Exception as db_err:
+                    print(f"Failed to save message to local database: {db_err}", flush=True)
                 
                 success, msg = send_contact_email(name, email, project, message)
                 

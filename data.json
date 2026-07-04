@@ -88,6 +88,17 @@
     "port": 587,
     "user": "",
     "password": "",
-    "receiver": "achyueee181@gmail.com"
-  }
+    "receiver": "achyueee181@gmail.com",
+    "web3forms_key": ""
+  },
+  "messages": [
+    {
+      "id": "msg_1783130851998",
+      "name": "Jane Doe",
+      "email": "janedoe@example.com",
+      "project": "music",
+      "message": "Hi Achyuthan, I want to edit a cool music video with VFX.",
+      "date": "2026-07-04 07:37:31"
+    }
+  ]
 }
