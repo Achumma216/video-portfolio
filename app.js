@@ -347,8 +347,9 @@ const loginForm = document.getElementById('admin-login-form');
 const loginErrorMsg = document.getElementById('login-error-msg');
 
 // Floating Admin Trigger Action
-adminTriggerBtn.addEventListener('click', () => {
+adminTriggerBtn.addEventListener('click', async () => {
     if (isAdmin) {
+        await fetchContent();
         populateDashboardContentForm();
         adminDashboardModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -546,6 +547,7 @@ document.getElementById('portfolio-contact-form').addEventListener('submit', asy
             document.getElementById('portfolio-contact-form').reset();
             // Clear floating labels has-value class
             document.querySelectorAll('#portfolio-contact-form .form-control').forEach(el => el.classList.remove('has-value'));
+            await fetchContent();
         } else {
             alert('Failed to send message: ' + (data.error || 'Server error.'));
         }
