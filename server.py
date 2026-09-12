@@ -19,7 +19,7 @@ mimetypes.add_type('image/png', '.png')
 mimetypes.add_type('image/jpeg', '.jpg')
 mimetypes.add_type('image/jpeg', '.jpeg')
 
-PORT = 8000
+PORT = int(os.environ.get('PORT', 8000))
 PASSWORD = " AchuSona#92!Sun "
 
 def parse_uploaded_file(rfile, headers):
@@ -371,8 +371,8 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
 
 socketserver.TCPServer.allow_reuse_address = True
-with socketserver.TCPServer(("", PORT), PortfolioHandler) as httpd:
-    print(f"Python server running at http://localhost:{PORT}")
+with socketserver.TCPServer(("0.0.0.0", PORT), PortfolioHandler) as httpd:
+    print(f"Python server running on port {PORT}")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
