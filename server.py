@@ -2,7 +2,6 @@ import http.server
 import socketserver
 import json
 import os
-import cgi
 import time
 import mimetypes
 from http.cookies import SimpleCookie
@@ -22,6 +21,55 @@ mimetypes.add_type('image/jpeg', '.jpeg')
 
 PORT = 8000
 PASSWORD = " AchuSona#92!Sun "
+
+def parse_uploaded_file(rfile, headers):
+    content_type = headers.get('Content-Type', '')
+    content_length = int(headers.get('Content-Length', 0))
+    if content_length <= 0:
+        return None, None
+    raw_bytes = rfile.read(content_length)
+    
+    boundary = None
+    for param in content_type.split(';'):
+        param = param.strip()
+        if param.startswith('boundary='):
+            boundary = param.split('=', 1)[1].strip('"\'')
+            break
+            
+    if not boundary:
+        return None, None
+        
+    boundary_bytes = ('--' + boundary).encode('utf-8')
+    parts = raw_bytes.split(boundary_bytes)
+    
+    for part in parts:
+        if not part or part.startswith(b'--'):
+            continue
+        if b'\r\n\r\n' in part:
+            header_data, body_data = part.split(b'\r\n\r\n', 1)
+        elif b'\n\n' in part:
+            header_data, body_data = part.split(b'\n\n', 1)
+        else:
+            continue
+            
+        if body_data.endswith(b'\r\n'):
+            body_data = body_data[:-2]
+        elif body_data.endswith(b'\n'):
+            body_data = body_data[:-1]
+            
+        header_text = header_data.decode('utf-8', errors='ignore')
+        filename = None
+        for line in header_text.splitlines():
+            if 'content-disposition' in line.lower() and 'filename=' in line.lower():
+                for item in line.split(';'):
+                    item = item.strip()
+                    if item.lower().startswith('filename='):
+                        filename = item.split('=', 1)[1].strip('"\'')
+                        break
+        if filename:
+            return filename, body_data
+            
+    return None, None
 
 def send_web3forms(key, name, email, project, message):
     import urllib.request
@@ -285,37 +333,29 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
                 return
                 
             try:
-                form = cgi.FieldStorage(
-                    fp=self.rfile,
-                    headers=self.headers,
-                    environ={'REQUEST_METHOD': 'POST',
-                             'CONTENT_TYPE': self.headers.get('Content-Type')}
-                )
-                
-                if 'file' in form:
-                    file_item = form['file']
-                    if file_item.filename:
-                        _, ext = os.path.splitext(file_item.filename)
-                        if not ext:
-                            ext = '.png'
+                original_filename, file_bytes = parse_uploaded_file(self.rfile, self.headers)
+                if original_filename and file_bytes is not None:
+                    _, ext = os.path.splitext(original_filename)
+                    if not ext:
+                        ext = '.png'
+                    
+                    filename = f"upload_{int(time.time())}{ext}"
+                    upload_dir = 'assets'
+                    os.makedirs(upload_dir, exist_ok=True)
+                    filepath = os.path.join(upload_dir, filename)
+                    
+                    with open(filepath, 'wb') as f:
+                        f.write(file_bytes)
                         
-                        filename = f"upload_{int(time.time())}{ext}"
-                        upload_dir = 'assets'
-                        os.makedirs(upload_dir, exist_ok=True)
-                        filepath = os.path.join(upload_dir, filename)
-                        
-                        with open(filepath, 'wb') as f:
-                            f.write(file_item.file.read())
-                            
-                        self.send_response(200)
-                        self.send_header('Content-Type', 'application/json')
-                        self.end_headers()
-                        self.wfile.write(json.dumps({
-                            'success': True,
-                            'message': 'File uploaded successfully!',
-                            'filePath': f'assets/{filename}'
-                        }).encode('utf-8'))
-                        return
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({
+                        'success': True,
+                        'message': 'File uploaded successfully!',
+                        'filePath': f'assets/{filename}'
+                    }).encode('utf-8'))
+                    return
                 
                 self.send_response(400)
                 self.send_header('Content-Type', 'application/json')
