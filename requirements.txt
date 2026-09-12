@@ -1,0 +1,1 @@
+# Python standard library project - no external pip dependencies required
